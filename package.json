@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
-    "lint": "eslint --fix \"src/**/*.js\""
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build",
+    "test": "vitest run", 
+    "test:watch": "vitest"
   },
   "author": "",
   "license": "ISC",
@@ -19,8 +22,12 @@
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",
+    "@types/bcryptjs": "^2.4.6",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.4.0",
     "zod": "^3.22.4"
   }
 }
