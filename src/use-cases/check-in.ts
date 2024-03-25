@@ -1,5 +1,6 @@
+
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
 import { CheckIn } from '@prisma/client'
-import { CheckInsRepository } from 'src/repositories/check-ins-repository'
 
 interface CheckInUseCaseRequest {
   userId: string
@@ -11,19 +12,21 @@ interface CheckInUseCaseResponse {
 }
 
 export class CheckInUseCase {
-  constructor(private checkInsRepository: CheckInsRepository) {}
+
+  constructor(private checkInsRepository: CheckInsRepository){}
 
   async execute({
     userId,
-    gymId,
-  }: CheckInUseCaseRequest): Promise<CheckInUseCaseResponse> {
+    gymId
+  }:CheckInUseCaseRequest ): Promise<CheckInUseCaseResponse> {
+
     const checkIn = await this.checkInsRepository.create({
-      userId,
-      gymId
+      gymId,
+      userId
     })
 
-    return {
-      checkIn,
-    }
+    return {checkIn}
+
   }
+
 }
